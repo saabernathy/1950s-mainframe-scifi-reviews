@@ -1,0 +1,649 @@
+/* 1950s MAINFRAME COMPUTER CONSOLE & VACUUM TUBE SYSTEM STYLESHEET */
+:root {
+    --cabinet-grey: #434c56;
+    --cabinet-dark: #2b333c;
+    --bezel-steel: #758290;
+    --panel-cream: #dfdac8;
+    --panel-border: #9b9380;
+    --chassis-shadow: #14181d;
+    --punch-buff: #ebdcb9;
+    --tape-hub-metal: #a9b7c6;
+    --tele-dark: #1a1e24;
+    
+    /* Jewel Lamps & Indicators */
+    --lamp-ruby: #ff3333;
+    --lamp-amber: #ffaa00;
+    --lamp-emerald: #33cc66;
+    --lamp-cyan: #00ccff;
+    --lamp-glow-red: rgba(255, 51, 51, 0.65);
+    --lamp-glow-amber: rgba(255, 170, 0, 0.65);
+    --lamp-glow-green: rgba(51, 204, 102, 0.65);
+    
+    --typewriter-text: #2c2925;
+    --crt-green: #4af626;
+    --crt-bg: #07170a;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--chassis-shadow);
+    color: var(--panel-cream);
+    font-family: 'Share Tech Mono', 'Courier New', monospace;
+    font-size: 15px;
+    line-height: 1.5;
+    background-image: 
+        repeating-linear-gradient(0deg, #181d23, #181d23 2px, #14181d 2px, #14181d 4px),
+        radial-gradient(circle at 50% 10%, #2e3843 0%, #121519 100%);
+    padding: 24px 14px 60px;
+}
+
+/* Master Heavy Cabinetry Frame */
+.mainframe-chassis {
+    max-width: 1280px;
+    margin: 0 auto;
+    background-color: var(--cabinet-grey);
+    border: 6px solid var(--bezel-steel);
+    border-radius: 6px;
+    box-shadow: 
+        0 0 0 2px #000, 
+        0 14px 35px rgba(0, 0, 0, 0.95), 
+        inset 0 2px 4px rgba(255, 255, 255, 0.25);
+    padding: 20px;
+    position: relative;
+}
+
+/* =======================================================
+   OPERATOR CONSOLE: TAPE DRIVES & ANNUNCIATOR
+   ======================================================= */
+.operator-console {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    background: linear-gradient(180deg, #37414b 0%, #20272f 100%);
+    border: 4px solid #1a2026;
+    border-radius: 4px;
+    padding: 16px;
+    gap: 16px;
+    margin-bottom: 24px;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+/* Magnetic Tape Reels */
+.tape-cabinet {
+    width: 170px;
+    background: #1d232a;
+    border: 3px solid #4f5a65;
+    border-radius: 4px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: inset 0 0 10px #000;
+}
+
+.tape-reel-assembly {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.tape-hub {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #8d9aa7 25%, #424c56 60%, #1a1e24 100%);
+    border: 3px solid #b6c2ce;
+    position: relative;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+}
+.tape-hub.left {
+    animation: tape-spin-clockwise 5s infinite linear;
+}
+.tape-hub.right {
+    animation: tape-spin-counter 6.5s infinite linear;
+}
+
+.tape-pack {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 4px solid #73593b;
+    background: #42321f;
+}
+.tape-pack.small {
+    width: 28px;
+    height: 28px;
+}
+
+.reel-spoke {
+    position: absolute;
+    top: 0; left: 50%;
+    width: 2px; height: 100%;
+    background: #b6c2ce;
+    transform: translateX(-50%);
+}
+.reel-spoke.r2 { transform: translateX(-50%) rotate(60deg); }
+.reel-spoke.r3 { transform: translateX(-50%) rotate(120deg); }
+
+.vacuum-column {
+    width: 90%;
+    height: 38px;
+    background: #0f1317;
+    border: 2px solid #363e46;
+    border-radius: 2px;
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.tape-tape-loop {
+    position: absolute;
+    top: 2px; left: 35%;
+    width: 12px; height: 30px;
+    border-left: 2px solid #8c6e49;
+    border-bottom: 2px solid #8c6e49;
+    border-radius: 0 0 8px 8px;
+}
+
+.cabinet-badge {
+    font-size: 9.5px;
+    font-weight: 700;
+    color: #9cb0c2;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Central Console Annunciator */
+.annunciator-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--panel-cream);
+    color: var(--typewriter-text);
+    border: 3px solid var(--panel-border);
+    border-radius: 4px;
+    padding: 14px 18px;
+    box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* Jewel Indicator Lamps */
+.jewel-lamp-rack {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    width: 100%;
+    border-bottom: 2px solid var(--panel-border);
+    padding-bottom: 10px;
+}
+
+.lamp-socket {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.jewel-lamp {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #5a5446;
+    background-color: #3a352a;
+    box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.5), 0 2px 4px #000;
+}
+
+.jewel-lamp.lamp-red.lit {
+    animation: flash-red 1.25s infinite steps(1);
+}
+.jewel-lamp.lamp-amber.lit {
+    animation: flash-amber 1.8s infinite steps(1);
+}
+.jewel-lamp.lamp-green.lit {
+    animation: flash-green 1.45s infinite steps(1);
+}
+.jewel-lamp.lamp-white.lit {
+    animation: flash-white 0.95s infinite steps(1);
+}
+.jewel-lamp.lamp-blue.lit {
+    animation: flash-blue 1.6s infinite steps(1);
+}
+.jewel-lamp.lamp-red:not(.lit) {
+    animation: overflow-strobe 2.4s infinite steps(1);
+}
+
+.lamp-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #4b4539;
+}
+
+.console-bezel {
+    text-align: center;
+    margin: 4px 0 8px;
+}
+
+.military-stencil {
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    color: #6d6452;
+}
+
+h1.system-title {
+    font-family: 'Chivo Mono', monospace;
+    font-size: clamp(24px, 4vw, 42px);
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #1a1e24;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8);
+    line-height: 1.15;
+}
+
+.system-subhead {
+    font-size: clamp(11px, 1.6vw, 13px);
+    letter-spacing: 2px;
+    color: #4f4738;
+}
+
+/* Binary Switch & Bit Register */
+.bit-register-strip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #cfc7b4;
+    padding: 6px 14px;
+    border: 2px solid var(--panel-border);
+    border-radius: 3px;
+}
+
+.bit-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.switch-up {
+    width: 6px; height: 12px;
+    background: #2b333c;
+    border-top: 3px solid #ff3333;
+    border-radius: 2px 2px 0 0;
+}
+.switch-down {
+    width: 6px; height: 12px;
+    background: #2b333c;
+    border-bottom: 3px solid #4af626;
+    border-radius: 0 0 2px 2px;
+}
+
+.register-id {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-left: 10px;
+    color: #3b352a;
+}
+
+/* =======================================================
+   80-COLUMN PUNCH CARD DIVIDER
+   ======================================================= */
+.punchcard-separator {
+    background-color: var(--punch-buff);
+    color: #383125;
+    border: 2px solid #b8a682;
+    padding: 10px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16px 0 34px;
+    position: relative;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.card-edge-cut {
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 0;
+    border-top: 12px solid var(--cabinet-grey);
+    border-right: 12px solid transparent;
+}
+
+.card-holes {
+    display: flex;
+    gap: 4px;
+}
+
+.rect-hole {
+    width: 4px;
+    height: 10px;
+    background-color: #1a1e24;
+    box-shadow: inset 0 1px 1px #000;
+}
+
+/* =======================================================
+   6 CORE-MEMORY COMPUTATION CELLS
+   ======================================================= */
+.core-memory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 36px 28px;
+}
+
+/* Steel Module Cabinet */
+.module-cabinet {
+    background: linear-gradient(180deg, #2f3842 0%, #1c2229 100%);
+    border: 3px solid #576573;
+    border-radius: 4px;
+    box-shadow: 
+        0 6px 18px rgba(0, 0, 0, 0.8),
+        inset 0 1px 2px rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.module-cabinet:hover {
+    transform: translateY(-4px);
+    border-color: #9cb0c2;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.95);
+}
+
+.chassis-header {
+    background: #171d24;
+    border-bottom: 2px solid #576573;
+    padding: 6px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.module-id {
+    font-size: 11px;
+    font-weight: bold;
+    color: #e59d23;
+    letter-spacing: 2px;
+}
+
+.vacuum-status {
+    font-size: 10px;
+    color: var(--crt-green);
+    letter-spacing: 1px;
+    animation: status-pulse 1.5s infinite ease-in-out;
+}
+
+/* Oscilloscope / CRT Bezel Framing for Poster */
+.oscilloscope-bay {
+    background: radial-gradient(circle at center, #1e2832 0%, #0c1015 80%);
+    padding: 20px 16px 12px;
+    text-align: center;
+}
+
+.metal-bezel-ring {
+    display: inline-block;
+    padding: 6px;
+    background: #39434d;
+    border: 3px solid #8d9ba8;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px #000, inset 0 0 8px rgba(0, 0, 0, 0.8);
+}
+
+.archival-poster {
+    display: block;
+    width: 250px;
+    height: 370px;
+    object-fit: cover;
+    border: 1px solid #141a20;
+    filter: contrast(1.05) saturate(1.05);
+}
+
+/* Telemetry Printout / Teleprinter Paper */
+.telemetry-readout {
+    background: #f1ebd9;
+    color: var(--typewriter-text);
+    padding: 18px 20px 22px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    border-top: 3px solid #6c5f49;
+}
+
+.readout-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #c9bda5;
+    padding-bottom: 4px;
+    margin-bottom: 8px;
+}
+
+.cycle-year {
+    font-weight: bold;
+    font-size: 12px;
+    color: #7b291d;
+    letter-spacing: 1.5px;
+}
+
+.producer-tag {
+    font-size: 10.5px;
+    font-weight: bold;
+    color: #5d5445;
+    letter-spacing: 1px;
+}
+
+h2.record-title {
+    font-family: 'Chivo Mono', monospace;
+    font-size: 22px;
+    font-weight: 800;
+    color: #1a1e24;
+    line-height: 1.25;
+    margin-bottom: 8px;
+    min-height: 54px;
+    letter-spacing: 0.5px;
+}
+
+.parameters-block {
+    font-size: 12px;
+    color: #4b4437;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.parameters-block strong {
+    color: #171c21;
+}
+
+.teleprinter-quote {
+    font-style: italic;
+    font-size: 12.5px;
+    background: #e2d9c1;
+    border-left: 3px solid #7b291d;
+    padding: 6px 10px;
+    margin-bottom: 12px;
+    color: #383023;
+}
+
+.analytical-dossier {
+    font-size: 13.5px;
+    text-align: justify;
+    line-height: 1.55;
+    margin-bottom: 16px;
+    color: #27221b;
+    flex-grow: 1;
+}
+
+/* Logic Verdict Bay */
+.logic-verdict-bay {
+    border-top: 2px solid #c9bda5;
+    padding-top: 10px;
+    margin-top: auto;
+}
+
+.lamp-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+}
+
+.verdict-jewel {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    background-color: #3a3224;
+}
+
+.verdict-jewel.on {
+    background-color: #33cc66;
+    animation: jewel-logic-pulse 1.7s infinite alternate ease-in-out;
+}
+.verdict-jewel.off {
+    background-color: #665b47;
+}
+
+.register-score {
+    font-weight: bold;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-left: 6px;
+    color: #1f252d;
+}
+
+.sub-log {
+    font-size: 10.5px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #7b291d;
+}
+
+/* =======================================================
+   BOTTOM POWER CHASSIS & EXHAUST VENTS
+   ======================================================= */
+.mainframe-footer {
+    margin-top: 40px;
+    background: #1f252d;
+    border: 3px solid #4a5460;
+    border-radius: 4px;
+    padding: 20px 16px;
+    text-align: center;
+}
+
+.relay-rack-vents {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.vent-slot {
+    width: 32px;
+    height: 6px;
+    background-color: #0b0e11;
+    border-top: 1px solid #38424e;
+    box-shadow: inset 0 2px 2px #000;
+}
+
+.power-readout {
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--crt-green);
+    margin-bottom: 6px;
+}
+
+.terminal-colophon {
+    font-size: 11.5px;
+    color: #8fa0b0;
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.45;
+}
+
+@media (max-width: 768px) {
+    .operator-console { flex-direction: column; }
+    .tape-cabinet { width: 100%; flex-direction: row; justify-content: space-around; }
+    .core-memory-grid { grid-template-columns: 1fr; }
+    .archival-poster { width: 220px; height: 325px; }
+    h2.record-title { min-height: auto; }
+}
+
+
+/* =======================================================
+   1950s MAINFRAME LIGHT FLASHING & RELAY PULSE ANIMATIONS
+   ======================================================= */
+@keyframes flash-red {
+    0%, 100% { background-color: var(--lamp-ruby); box-shadow: 0 0 14px var(--lamp-glow-red), inset 0 2px 4px #fff; opacity: 1; }
+    48% { background-color: var(--lamp-ruby); box-shadow: 0 0 14px var(--lamp-glow-red), inset 0 2px 4px #fff; opacity: 1; }
+    50% { background-color: #3a1515; box-shadow: none; opacity: 0.45; }
+    96% { background-color: #3a1515; box-shadow: none; opacity: 0.45; }
+}
+
+@keyframes flash-amber {
+    0%, 100% { background-color: var(--lamp-amber); box-shadow: 0 0 12px var(--lamp-glow-amber), inset 0 2px 4px #fff; opacity: 1; }
+    28% { background-color: var(--lamp-amber); box-shadow: 0 0 12px var(--lamp-glow-amber), inset 0 2px 4px #fff; opacity: 1; }
+    30% { background-color: #382810; box-shadow: none; opacity: 0.4; }
+    75% { background-color: #382810; box-shadow: none; opacity: 0.4; }
+    77% { background-color: var(--lamp-amber); box-shadow: 0 0 12px var(--lamp-glow-amber), inset 0 2px 4px #fff; opacity: 1; }
+}
+
+@keyframes flash-green {
+    0%, 100% { background-color: var(--lamp-emerald); box-shadow: 0 0 14px var(--lamp-glow-green), inset 0 2px 4px #fff; opacity: 1; }
+    60% { background-color: var(--lamp-emerald); box-shadow: 0 0 14px var(--lamp-glow-green), inset 0 2px 4px #fff; opacity: 1; }
+    62% { background-color: #103018; box-shadow: none; opacity: 0.4; }
+    88% { background-color: #103018; box-shadow: none; opacity: 0.4; }
+}
+
+@keyframes flash-white {
+    0%, 100% { background-color: #ffffff; box-shadow: 0 0 15px rgba(255, 255, 255, 0.95), inset 0 2px 4px #fff; opacity: 1; }
+    18% { background-color: #ffffff; box-shadow: 0 0 15px rgba(255, 255, 255, 0.95), inset 0 2px 4px #fff; opacity: 1; }
+    20% { background-color: #3a3834; box-shadow: none; opacity: 0.35; }
+    68% { background-color: #3a3834; box-shadow: none; opacity: 0.35; }
+}
+
+@keyframes flash-blue {
+    0%, 100% { background-color: var(--lamp-cyan); box-shadow: 0 0 14px rgba(0, 204, 255, 0.85), inset 0 2px 4px #fff; opacity: 1; }
+    38% { background-color: var(--lamp-cyan); box-shadow: 0 0 14px rgba(0, 204, 255, 0.85), inset 0 2px 4px #fff; opacity: 1; }
+    40% { background-color: #0c2a33; box-shadow: none; opacity: 0.4; }
+    82% { background-color: #0c2a33; box-shadow: none; opacity: 0.4; }
+}
+
+@keyframes overflow-strobe {
+    0%, 49% { background-color: #2b1111; box-shadow: none; opacity: 0.3; }
+    50%, 100% { background-color: var(--lamp-ruby); box-shadow: 0 0 16px var(--lamp-glow-red), inset 0 2px 4px #fff; opacity: 1; }
+}
+
+@keyframes tape-spin-clockwise {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes tape-spin-counter {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+}
+
+@keyframes status-pulse {
+    0%, 100% { opacity: 1; text-shadow: 0 0 8px var(--crt-green); }
+    50% { opacity: 0.45; text-shadow: none; }
+}
+
+@keyframes jewel-logic-pulse {
+    0%, 100% { box-shadow: 0 0 8px rgba(51, 204, 102, 0.9); opacity: 1; }
+    50% { box-shadow: 0 0 2px rgba(51, 204, 102, 0.3); opacity: 0.65; }
+}
